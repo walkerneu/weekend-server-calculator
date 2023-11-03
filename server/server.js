@@ -1,21 +1,46 @@
 const express = require('express');
 const app = express();
-let PORT = process.env.PORT || 5000;
+let PORT = process.env.PORT || 5001;
 
 app.use(express.json());
 app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = []
+let calculations = [];
+
+function doMath (equation) {
+  if (equation.operator === "+"){
+      equation.solution = Number(equation.num1) + Number(equation.num2);
+  }
+  else if (equation.operator === "-"){
+      equation.solution = Number(equation.num1) - Number(equation.num2);
+  }
+  else if (equation.operator === "*"){
+      equation.solution = Number(equation.num1) * Number(equation.num2);
+  }
+  else {
+      equation.solution = Number(equation.num1) / Number(equation.num2);
+  }  
+  calculations.push(equation);
+}
 
 
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
 
-// POST /calculations
+app.get('/calculations', (req, res) => {
+  console.log('GET /calculations received a request!')
+  res.send(calculations);
+})
 
+// POST /calculations
+app.post('/calculations', (req, res) => {
+  let newEquation = req.body;
+  doMath (newEquation);
+  res.sendStatus(201);
+})
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
