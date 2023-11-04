@@ -3,6 +3,8 @@ console.log("ayo world, kinda sus");
 let equationObject = {};
 console.log (equationObject);
 
+getEquations ();
+
 function operatorButton (event) {
     event.preventDefault();
     equationObject.operator = event.target.value;
@@ -10,19 +12,19 @@ function operatorButton (event) {
 
 function submitEquation (event) {
     event.preventDefault();
-    equationObject.num1 = document.getElementById("num1").value;
-    equationObject.num2 = document.getElementById("num2").value;
+    equationObject.numOne = Number(document.getElementById("num1").value);
+    equationObject.numTwo = Number(document.getElementById("num2").value);
     console.log(equationObject);
-    if (equationObject.num1 === false){
-        equationObject.num1 = 0;
+    if (equationObject.numOne === undefined){
+        equationObject.numOne = 0;
     }
-    if (equationObject.num2 === false){
-        equationObject.num2 = 0
+    if (equationObject.numTwo === undefined){
+        equationObject.numTwo = 0
     }
-    if (equationObject.operator === false){
-        alert("You need to press an operator!");
-    }
-    else{
+    // if (equationObject.operator === false){
+    //     alert("You need to press an operator!");
+    // }
+    // else{
     axios({
         method: 'POST',
         url: '/calculations',
@@ -30,7 +32,7 @@ function submitEquation (event) {
         }).then((response) => {
             getEquations ()
         })
-        }
+        // }
     }
 
 function getEquations () {
@@ -49,10 +51,10 @@ function renderValues (equations) {
     equationList.innerHTML = '';
     let solutionDisplay = document.getElementById("solution-id");
     solutionDisplay.textContent = '';
-    solutionDisplay.textContent = equations[equations.length-1].solution;
+    solutionDisplay.textContent = equations[equations.length-1].result;
     for (let equation of equations){
         equationList.innerHTML += `
-        <li>${equation.num1} ${equation.operator} ${equation.num2} = ${equation.solution}</li>
+        <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
         `
     }
 }

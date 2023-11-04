@@ -11,16 +11,16 @@ let calculations = [];
 
 function doMath (equation) {
   if (equation.operator === "+"){
-      equation.solution = Number(equation.num1) + Number(equation.num2);
+      equation.result = Number(equation.numOne) + Number(equation.numTwo);
   }
   else if (equation.operator === "-"){
-      equation.solution = Number(equation.num1) - Number(equation.num2);
+      equation.result = Number(equation.numOne) - Number(equation.numTwo);
   }
   else if (equation.operator === "*"){
-      equation.solution = Number(equation.num1) * Number(equation.num2);
+      equation.result = Number(equation.numOne) * Number(equation.numTwo);
   }
   else {
-      equation.solution = Number(equation.num1) / Number(equation.num2);
+      equation.result = Number(equation.numOne) / Number(equation.numTwo);
   }  
   calculations.push(equation);
 }
