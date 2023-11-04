@@ -5,8 +5,6 @@ let calcNumber = ''
 console.log (equationObject);
 
 getEquations ();
-enableNumbers ();
-enableOperators ();
 
 function makeNumber (event, num) {
     event.preventDefault();
@@ -26,6 +24,7 @@ function operatorButton (event) {
 
 function submitEquation (event) {
     event.preventDefault();
+    if ((equationObject.operator || equationObject.numOne || equationObject.numTwo ) !== (undefined || '')){
     let display = document.getElementById("display-id");
     display.value += "=";
     equationObject.numTwo = Number(calcNumber);
@@ -37,6 +36,10 @@ function submitEquation (event) {
         }).then((response) => {
             getEquations ()
         })
+    }
+    else {
+        alert("You need to input a valid equation!")
+    }
     }
 
 function getEquations () {
@@ -61,6 +64,7 @@ function renderValues (equations) {
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
         `
     }
+    equationObject = {};
 }
 
 function clearValues (event) {
@@ -68,8 +72,6 @@ function clearValues (event) {
     document.getElementById("display-id").value = '';
     equationObject = {};
     calcNumber = '';
-    enableOperators ();
-    enableNumbers ();
 }
 
 function clearHistory (event) {
@@ -92,6 +94,7 @@ function deleteChar (event) {
     console.log(displayValue[displayValue.length-1]);
     if (displayValue[displayValue.length-1] = ("+" || "-" || "*" || "/")){
         document.getElementById("display-id").value = document.getElementById("display-id").value.slice(0, -1);
+        calcNumber = `${equationObject.numOne}`
     }
     else {
     calcNumber = calcNumber.slice(0, -1);

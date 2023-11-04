@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Courier New", Courier, monospace;
-    font-size: large
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
 }
 
 body {
@@ -22,9 +22,7 @@ body {
 .history button {
     color: #fff;
     position: top;
-    /* display: grid; */
     width: 160px;
-    /* place-items: center; */
     margin: 8px;
     height: 80px;
     background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
@@ -41,9 +39,7 @@ body {
 .container button {
     color: #fff;
     position: relative;
-    /* display: grid; */
     width: 80px;
-    /* place-items: center; */
     margin: 8px;
     height: 80px;
     background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
