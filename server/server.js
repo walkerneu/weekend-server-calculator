@@ -41,6 +41,13 @@ app.post('/calculations', (req, res) => {
   doMath (newEquation);
   res.sendStatus(201);
 })
+// DELETE /calculations
+  // delete request that resets the calculations array
+  // and returns it in the response
+app.delete('/calculations', (req, res) => {
+  calculations = [];
+  res.send(calculations);
+})
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸

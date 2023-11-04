@@ -15,15 +15,10 @@ function submitEquation (event) {
     equationObject.numOne = Number(document.getElementById("num1").value);
     equationObject.numTwo = Number(document.getElementById("num2").value);
     console.log(equationObject);
-    if (equationObject.numOne === undefined){
-        equationObject.numOne = 0;
-        document.getElementById("num1").value = '0';
+    if (equationObject.numOne === undefined || equationObject.numTwo === undefined){
+        alert("You need to input a number!");
     }
-    if (equationObject.numTwo === undefined){
-        equationObject.numTwo = 0
-        document.getElementById("num2").value = '0';
-    }
-    if (equationObject.operator === "+" || equationObject.operator === "-" || equationObject.operator === "*" || equationObject.operator === "/"){
+    else if (equationObject.operator === "+" || equationObject.operator === "-" || equationObject.operator === "*" || equationObject.operator === "/"){
     axios({
         method: 'POST',
         url: '/calculations',
@@ -69,4 +64,16 @@ function clearValues (event) {
     equationObject = {}
 }
 
-
+function clearHistory (event) {
+    event.preventDefault();
+    console.log('clear me baby');
+    axios({
+        method: 'DELETE',
+        url: '/calculations'
+        }).then((response) => {
+            console.log(response.data);
+            let equationArray = response.data;
+            renderValues (equationArray)
+        })
+    clearValues(event);
+}
