@@ -1,35 +1,40 @@
 console.log("ayo world, kinda sus");
 
 let equationObject = {};
+let calcNumber = ''
 console.log (equationObject);
 
 getEquations ();
 
+function makeNumber (event, num) {
+    event.preventDefault();
+    calcNumber += num;
+    let display = document.getElementById("display-id");
+    display.textContent += num;
+}
+
 function operatorButton (event) {
     event.preventDefault();
+    let display = document.getElementById("display-id");
+    display.textContent += event.target.value;
     equationObject.operator = event.target.value;
-    }
+    equationObject.numOne = Number(calcNumber);
+    calcNumber = '';
+}
 
 function submitEquation (event) {
     event.preventDefault();
-    equationObject.numOne = Number(document.getElementById("num1").value);
-    equationObject.numTwo = Number(document.getElementById("num2").value);
+    let display = document.getElementById("display-id");
+    display.textContent += "=";
+    equationObject.numTwo = Number(calcNumber);
     console.log(equationObject);
-    if (equationObject.numOne === undefined || equationObject.numTwo === undefined){
-        alert("You need to input a number!");
-    }
-    else if (equationObject.operator === "+" || equationObject.operator === "-" || equationObject.operator === "*" || equationObject.operator === "/"){
-    axios({
-        method: 'POST',
-        url: '/calculations',
-        data: equationObject
+        axios({
+            method: 'POST',
+            url: '/calculations',
+            data: equationObject
         }).then((response) => {
             getEquations ()
         })
-        }
-    else {
-        alert("You need to press an operator!");
-    }
     }
 
 function getEquations () {
@@ -46,9 +51,8 @@ function getEquations () {
 function renderValues (equations) {
     let equationList = document.getElementById("equationList");
     equationList.innerHTML = '';
-    let solutionDisplay = document.getElementById("solution-id");
-    solutionDisplay.textContent = '';
-    solutionDisplay.textContent = equations[equations.length-1].result;
+    let display = document.getElementById("display-id");
+    display.textContent += equations[equations.length-1].result;
     for (let equation of equations){
         equationList.innerHTML += `
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
@@ -58,10 +62,9 @@ function renderValues (equations) {
 
 function clearValues (event) {
     event.preventDefault();
-    document.getElementById("num1").value = '';
-    document.getElementById("num2").value = '';
-    document.getElementById("solution-id").textContent = '';
-    equationObject = {}
+    document.getElementById("display-id").textContent = '';
+    equationObject = {};
+    calcNumber = '';
 }
 
 function clearHistory (event) {
