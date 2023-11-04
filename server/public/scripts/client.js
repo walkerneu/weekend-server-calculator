@@ -17,14 +17,13 @@ function submitEquation (event) {
     console.log(equationObject);
     if (equationObject.numOne === undefined){
         equationObject.numOne = 0;
+        document.getElementById("num1").value = '0';
     }
     if (equationObject.numTwo === undefined){
         equationObject.numTwo = 0
+        document.getElementById("num2").value = '0';
     }
-    // if (equationObject.operator === false){
-    //     alert("You need to press an operator!");
-    // }
-    // else{
+    if (equationObject.operator === "+" || equationObject.operator === "-" || equationObject.operator === "*" || equationObject.operator === "/"){
     axios({
         method: 'POST',
         url: '/calculations',
@@ -32,7 +31,10 @@ function submitEquation (event) {
         }).then((response) => {
             getEquations ()
         })
-        // }
+        }
+    else {
+        alert("You need to press an operator!");
+    }
     }
 
 function getEquations () {

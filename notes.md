@@ -26,11 +26,11 @@ CLIENT JS:
 submit function
                     handles the form inputs
                     puts each of the inputed values into a seperate property of the global object
-    if statement to check if object has an operator
-    if yes
+                    if statement to check if object has an operator
+                    if yes
                     POST that object to the server
-    trigger a get function
-    else send an alert
+                    trigger a get function
+                    else send an alert
 
                 Get function
                     GET request
@@ -47,10 +47,10 @@ submit function
                     array[array.length-1].solution to display prominently
                     innerHTML that shit bay-bee
 
-Clear function
-    clears the values from the submit fields
+                Clear function
+                    clears the values from the submit fields
                     ???undisables the +-*/ butons
-    resets the global object to empty
+                    resets the global object to empty
 
 
 SERVER JS:
