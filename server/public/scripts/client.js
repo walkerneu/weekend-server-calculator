@@ -12,23 +12,22 @@ function makeNumber (event, num) {
     event.preventDefault();
     calcNumber += num;
     let display = document.getElementById("display-id");
-    display.textContent += num;
+    display.value += num;
 }
 
 function operatorButton (event) {
     event.preventDefault();
     let display = document.getElementById("display-id");
-    display.textContent += event.target.value;
+    display.value += event.target.value;
     equationObject.operator = event.target.value;
     equationObject.numOne = Number(calcNumber);
     calcNumber = '';
-    disableOperators ();
 }
 
 function submitEquation (event) {
     event.preventDefault();
     let display = document.getElementById("display-id");
-    display.textContent += "=";
+    display.value += "=";
     equationObject.numTwo = Number(calcNumber);
     console.log(equationObject);
         axios({
@@ -55,18 +54,18 @@ function renderValues (equations) {
     let equationList = document.getElementById("equationList");
     equationList.innerHTML = '';
     let display = document.getElementById("display-id");
-    display.textContent += equations[equations.length-1].result;
+    display.value = equations[equations.length-1].result;
+    calcNumber = equations[equations.length-1].result
     for (let equation of equations){
         equationList.innerHTML += `
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
         `
     }
-    disableNumbers ();
 }
 
 function clearValues (event) {
     event.preventDefault();
-    document.getElementById("display-id").textContent = '';
+    document.getElementById("display-id").value = '';
     equationObject = {};
     calcNumber = '';
     enableOperators ();
@@ -85,6 +84,12 @@ function clearHistory (event) {
             renderValues (equationArray)
         })
     clearValues(event);
+}
+
+function deleteChar (event) {
+    event.preventDefault();
+    let display = document.getElementById("display-id")
+    display[display.length-1] = '';
 }
 
 function disableOperators () {

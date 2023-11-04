@@ -5,14 +5,16 @@
     <title>Server-Side Calculator</title>    
     <script defer src="scripts/axios.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculate Me, Baby!</title>
   </head>
   <body>
-    <h1>Server-Side Calculator</h1>
-
+    <div class="container">
     <form data-testid="calculator">
       
       <p>
-      <span id="display-id" class="calc-display"></span>
+      <!-- <div id="display-id" class="calc-display"></div> -->
+      <input type="text" class="display" readonly name="txt" id="display-id"/>
       <button onclick="clearValues (event)" id="clear">C</button>
       </p>
      
@@ -40,8 +42,12 @@
         <button onclick="submitEquation (event)" id="submit">=</button>
         <button onclick="operatorButton (event)" id="divideButton" value="/">/</button>
       </p>
+      <p>
+        <button onclick="deleteChar (event)" class="delete">Delete</button>
+      </p>
     </form>
-
+    </div>
+    <div class="history">
     <section data-testid="recentResult" id="solution-id">
       <!-- The most recent calculation result goes here. -->
     </section>
@@ -50,5 +56,6 @@
     <section data-testid="resultHistory" id="equationList">
       <!-- The list of calculation results goes here. -->
     </section>
+    </div>
   </body>
 </html>
