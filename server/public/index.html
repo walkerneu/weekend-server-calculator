@@ -10,31 +10,33 @@
     <h1>Server-Side Calculator</h1>
 
     <form data-testid="calculator">
+      
       <p>
-      <div id="display-id" class="calc-display"></div>
+      <span id="display-id" class="calc-display"></span>
       <button onclick="clearValues (event)" id="clear">C</button>
       </p>
+     
       <p>
-        <button onclick="makeNumber (event, '7')">7</button>
-        <button onclick="makeNumber (event, '8')">8</button>
-        <button onclick="makeNumber (event, '9')">9</button>
+        <button onclick="makeNumber (event, '7')" id="id-7">7</button>
+        <button onclick="makeNumber (event, '8')" id="id-8">8</button>
+        <button onclick="makeNumber (event, '9')" id="id-9">9</button>
         <button onclick="operatorButton (event)" id="addButton" value="+">+</button>
       </p>
       <p>
-        <button onclick="makeNumber (event, '4')">4</button>
-        <button onclick="makeNumber (event, '5')">5</button>
-        <button onclick="makeNumber (event, '6')">6</button>
+        <button onclick="makeNumber (event, '4')" id="id-4">4</button>
+        <button onclick="makeNumber (event, '5')" id="id-5">5</button>
+        <button onclick="makeNumber (event, '6')" id="id-6">6</button>
         <button onclick="operatorButton (event)" id="subtractButton" value="-">-</button>
       </p>
       <p>
-        <button onclick="makeNumber (event, '1')">1</button>
-        <button onclick="makeNumber (event, '2')">2</button>
-        <button onclick="makeNumber (event, '3')">3</button>
+        <button onclick="makeNumber (event, '1')" id="id-1">1</button>
+        <button onclick="makeNumber (event, '2')" id="id-2">2</button>
+        <button onclick="makeNumber (event, '3')" id="id-3">3</button>
         <button onclick="operatorButton (event)" id="multiplyButton" value="*">*</button>
       </p>
       <p>
-        <button onclick="makeNumber (event, '0')">0</button>
-        <button onclick="makeNumber (event, '.')">.</button>
+        <button onclick="makeNumber (event, '0')" id="id-0">0</button>
+        <button onclick="makeNumber (event, '.')" id="id-dec">.</button>
         <button onclick="submitEquation (event)" id="submit">=</button>
         <button onclick="operatorButton (event)" id="divideButton" value="/">/</button>
       </p>

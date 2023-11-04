@@ -20,6 +20,10 @@ function operatorButton (event) {
     equationObject.operator = event.target.value;
     equationObject.numOne = Number(calcNumber);
     calcNumber = '';
+    document.getElementById("addButton").setAttribute("disabled", true);
+    document.getElementById("subtractButton").setAttribute("disabled", true);
+    document.getElementById("multiplyButton").setAttribute("disabled", true);
+    document.getElementById("divideButton").setAttribute("disabled", true);
 }
 
 function submitEquation (event) {
@@ -65,6 +69,14 @@ function clearValues (event) {
     document.getElementById("display-id").textContent = '';
     equationObject = {};
     calcNumber = '';
+    document.getElementById("addButton").removeAttribute("disabled");
+    document.getElementById("subtractButton").removeAttribute("disabled");
+    document.getElementById("multiplyButton").removeAttribute("disabled");
+    document.getElementById("divideButton").removeAttribute("disabled");
+    // document.getElementById("attack1").removeAttribute("disabled");
+    // document.getElementById("attack1").removeAttribute("disabled");
+    // document.getElementById("attack1").removeAttribute("disabled");
+    // document.getElementById("attack1").removeAttribute("disabled");
 }
 
 function clearHistory (event) {

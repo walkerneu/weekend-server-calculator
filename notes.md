@@ -79,6 +79,8 @@ SERVER JS:
 
 CSS: Nothing for now, will think about if space, may be nescesary for stretch.
 
+.btn:hover:not(:disabled)
+
 
 
 
