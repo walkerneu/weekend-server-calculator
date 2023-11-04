@@ -55,7 +55,7 @@ function renderValues (equations) {
     equationList.innerHTML = '';
     let display = document.getElementById("display-id");
     display.value = equations[equations.length-1].result;
-    calcNumber = equations[equations.length-1].result
+    calcNumber = `${equations[equations.length-1].result}`
     for (let equation of equations){
         equationList.innerHTML += `
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
@@ -88,8 +88,15 @@ function clearHistory (event) {
 
 function deleteChar (event) {
     event.preventDefault();
-    let display = document.getElementById("display-id")
-    display[display.length-1] = '';
+    let displayValue = document.getElementById("display-id").value
+    console.log(displayValue[displayValue.length-1]);
+    if (displayValue[displayValue.length-1] = ("+" || "-" || "*" || "/")){
+        document.getElementById("display-id").value = document.getElementById("display-id").value.slice(0, -1);
+    }
+    else {
+    calcNumber = calcNumber.slice(0, -1);
+    document.getElementById("display-id").value = document.getElementById("display-id").value.slice(0, -1);
+    }
 }
 
 function disableOperators () {
