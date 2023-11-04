@@ -5,6 +5,8 @@ let calcNumber = ''
 console.log (equationObject);
 
 getEquations ();
+enableNumbers ();
+enableOperators ();
 
 function makeNumber (event, num) {
     event.preventDefault();
@@ -20,10 +22,7 @@ function operatorButton (event) {
     equationObject.operator = event.target.value;
     equationObject.numOne = Number(calcNumber);
     calcNumber = '';
-    document.getElementById("addButton").setAttribute("disabled", true);
-    document.getElementById("subtractButton").setAttribute("disabled", true);
-    document.getElementById("multiplyButton").setAttribute("disabled", true);
-    document.getElementById("divideButton").setAttribute("disabled", true);
+    disableOperators ();
 }
 
 function submitEquation (event) {
@@ -62,6 +61,7 @@ function renderValues (equations) {
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
         `
     }
+    disableNumbers ();
 }
 
 function clearValues (event) {
@@ -69,14 +69,8 @@ function clearValues (event) {
     document.getElementById("display-id").textContent = '';
     equationObject = {};
     calcNumber = '';
-    document.getElementById("addButton").removeAttribute("disabled");
-    document.getElementById("subtractButton").removeAttribute("disabled");
-    document.getElementById("multiplyButton").removeAttribute("disabled");
-    document.getElementById("divideButton").removeAttribute("disabled");
-    // document.getElementById("attack1").removeAttribute("disabled");
-    // document.getElementById("attack1").removeAttribute("disabled");
-    // document.getElementById("attack1").removeAttribute("disabled");
-    // document.getElementById("attack1").removeAttribute("disabled");
+    enableOperators ();
+    enableNumbers ();
 }
 
 function clearHistory (event) {
@@ -91,4 +85,56 @@ function clearHistory (event) {
             renderValues (equationArray)
         })
     clearValues(event);
+}
+
+function disableOperators () {
+    document.getElementById("addButton").setAttribute("disabled", true);
+    document.getElementById("subtractButton").setAttribute("disabled", true);
+    document.getElementById("multiplyButton").setAttribute("disabled", true);
+    document.getElementById("divideButton").setAttribute("disabled", true);
+}
+
+function disableNumbers () {
+    document.getElementById("id-0").setAttribute("disabled", true);
+    document.getElementById("id-1").setAttribute("disabled", true);
+    document.getElementById("id-2").setAttribute("disabled", true);
+    document.getElementById("id-3").setAttribute("disabled", true);
+    document.getElementById("id-4").setAttribute("disabled", true);
+    document.getElementById("id-5").setAttribute("disabled", true);
+    document.getElementById("id-6").setAttribute("disabled", true);
+    document.getElementById("id-7").setAttribute("disabled", true);
+    document.getElementById("id-8").setAttribute("disabled", true);
+    document.getElementById("id-9").setAttribute("disabled", true);
+    document.getElementById("id-dec").setAttribute("disabled", true);
+
+}
+
+function disableSubmit () {
+
+}
+
+function enableOperators () {
+    document.getElementById("addButton").removeAttribute("disabled");
+    document.getElementById("subtractButton").removeAttribute("disabled");
+    document.getElementById("multiplyButton").removeAttribute("disabled");
+    document.getElementById("divideButton").removeAttribute("disabled");
+}
+
+function enableNumbers () {
+    document.getElementById("id-0").removeAttribute("disabled");
+    document.getElementById("id-1").removeAttribute("disabled");
+    document.getElementById("id-2").removeAttribute("disabled");
+    document.getElementById("id-3").removeAttribute("disabled");
+    document.getElementById("id-4").removeAttribute("disabled");
+    document.getElementById("id-5").removeAttribute("disabled");
+    document.getElementById("id-6").removeAttribute("disabled");
+    document.getElementById("id-7").removeAttribute("disabled");
+    document.getElementById("id-8").removeAttribute("disabled");
+    document.getElementById("id-9").removeAttribute("disabled");
+    document.getElementById("id-dec").removeAttribute("disabled");
+
+}
+
+function enableSubmit () {
+
 }
