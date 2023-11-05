@@ -20,11 +20,12 @@ function operatorButton (event) {
     equationObject.operator = event.target.value;
     equationObject.numOne = Number(calcNumber);
     calcNumber = '';
+    disableOperators ();
 }
 
 function submitEquation (event) {
     event.preventDefault();
-    if ((equationObject.operator || equationObject.numOne || equationObject.numTwo ) !== (undefined || '')){
+    if (equationObject.operator || equationObject.numOne || equationObject.numTwo !== undefined || ''){
     let display = document.getElementById("display-id");
     display.value += "=";
     equationObject.numTwo = Number(calcNumber);
@@ -40,6 +41,7 @@ function submitEquation (event) {
     else {
         alert("You need to input a valid equation!")
     }
+    enableOperators ()
     }
 
 function getEquations () {
@@ -72,6 +74,7 @@ function clearValues (event) {
     document.getElementById("display-id").value = '';
     equationObject = {};
     calcNumber = '';
+    enableOperators ()
 }
 
 function clearHistory (event) {
@@ -91,10 +94,12 @@ function clearHistory (event) {
 function deleteChar (event) {
     event.preventDefault();
     let displayValue = document.getElementById("display-id").value
-    console.log(displayValue[displayValue.length-1]);
-    if (displayValue[displayValue.length-1] = ("+" || "-" || "*" || "/")){
+    console.log("This is the character you're deleting:", displayValue[displayValue.length-1]);
+    if (displayValue[displayValue.length-1] === "+" || "-" || "*" || "/"){
         document.getElementById("display-id").value = document.getElementById("display-id").value.slice(0, -1);
         calcNumber = `${equationObject.numOne}`
+        console.log("This is the calcNumber:", calcNumber);
+        enableOperators ()
     }
     else {
     calcNumber = calcNumber.slice(0, -1);

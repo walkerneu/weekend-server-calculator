@@ -9,6 +9,10 @@ app.use(express.static('server/public'));
 // calculation objects:
 let calculations = [];
 
+//Math function takes in an object from the post request
+// access the operator property to determine which mathematical function to run
+// applies the math, and adds the solution to the result property
+// of the object, and pushes that object into the global calculations array
 function doMath (equation) {
   if (equation.operator === "+"){
       equation.result = Number(equation.numOne) + Number(equation.numTwo);
