@@ -45,15 +45,19 @@ body {
     background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
 }
 .container .delete {
-    width: 160px;
+    width: 185px;
     background: linear-gradient(180deg, #9d2c2c, #ce1414)
+}
+.container .clear {
+    width: 185px;
+    background: linear-gradient(180deg, #5d4d4d, #7c6c6c)
 }
 
 .container .display {
     position: relative;
     grid-column: span 4;
     height: 100px;
-    width: 275px;
+    width: 390px;
     left: 10px;
     border: none;
     outline: black;

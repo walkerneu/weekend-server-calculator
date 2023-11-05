@@ -15,9 +15,11 @@
       <p>
       <!-- <div id="display-id" class="calc-display"></div> -->
       <input type="text" class="display" readonly name="txt" id="display-id"/>
-      <button onclick="clearValues (event)" id="clear">C</button>
       </p>
-     
+      <p>
+        <button onclick="deleteChar (event)" class="delete">Delete</button>
+        <button onclick="clearValues (event)" class="clear" id="clear">Clear</button>
+      </p>   
       <p>
         <button onclick="makeNumber (event, '7')" id="id-7">7</button>
         <button onclick="makeNumber (event, '8')" id="id-8">8</button>
@@ -41,9 +43,6 @@
         <button onclick="makeNumber (event, '.')" id="id-dec">.</button>
         <button onclick="submitEquation (event)" id="submit">=</button>
         <button onclick="operatorButton (event)" id="divideButton" value="/">/</button>
-      </p>
-      <p>
-        <button onclick="deleteChar (event)" class="delete">Delete</button>
       </p>
     </form>
     </div>

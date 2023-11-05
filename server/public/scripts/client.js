@@ -25,7 +25,7 @@ function operatorButton (event) {
 
 function submitEquation (event) {
     event.preventDefault();
-    if (equationObject.operator || equationObject.numOne || equationObject.numTwo !== undefined || ''){
+    if (equationObject.operator !== undefined){
     let display = document.getElementById("display-id");
     display.value += "=";
     equationObject.numTwo = Number(calcNumber);
