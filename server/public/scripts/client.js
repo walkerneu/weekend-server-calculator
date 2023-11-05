@@ -18,17 +18,20 @@ function operatorButton (event) {
     let display = document.getElementById("display-id");
     display.value += event.target.value;
     equationObject.operator = event.target.value;
-    equationObject.numOne = Number(calcNumber);
-    calcNumber = '';
+    calcNumber += event.target.value;
+    // equationObject.numOne = Number(calcNumber);
+    // calcNumber = '';
     disableOperators ();
 }
 
 function submitEquation (event) {
     event.preventDefault();
     if (equationObject.operator !== undefined){
-    let display = document.getElementById("display-id");
-    display.value += "=";
-    equationObject.numTwo = Number(calcNumber);
+    // let display = document.getElementById("display-id");
+    // display.value += "=";
+    let splitArray = calcNumber.split(equationObject.operator);
+    equationObject.numOne = Number(splitArray[0]);
+    equationObject.numTwo = Number(splitArray[1]);
     console.log(equationObject);
         axios({
             method: 'POST',
@@ -60,7 +63,7 @@ function renderValues (equations) {
     equationList.innerHTML = '';
     let display = document.getElementById("display-id");
     display.value = equations[equations.length-1].result;
-    calcNumber = `${equations[equations.length-1].result}`
+    calcNumber = equations[equations.length-1].result;
     for (let equation of equations){
         equationList.innerHTML += `
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
@@ -97,8 +100,8 @@ function deleteChar (event) {
     console.log("This is the character you're deleting:", displayValue[displayValue.length-1]);
     if (displayValue[displayValue.length-1] === "+" || "-" || "*" || "/"){
         document.getElementById("display-id").value = document.getElementById("display-id").value.slice(0, -1);
-        calcNumber = `${equationObject.numOne}`
         console.log("This is the calcNumber:", calcNumber);
+        calcNumber = calcNumber.slice(0, -1);
         enableOperators ()
     }
     else {
