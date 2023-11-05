@@ -63,7 +63,8 @@ function renderValues (equations) {
     equationList.innerHTML = '';
     let display = document.getElementById("display-id");
     display.value = equations[equations.length-1].result;
-    calcNumber = equations[equations.length-1].result;
+    calcNumber = `${equations[equations.length-1].result}`;
+    console.log(calcNumber);
     for (let equation of equations){
         equationList.innerHTML += `
         <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
