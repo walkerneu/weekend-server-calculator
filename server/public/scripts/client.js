@@ -67,7 +67,7 @@ function renderValues (equations) {
     console.log(calcNumber);
     for (let equation of equations){
         equationList.innerHTML += `
-        <li>${equation.numOne} ${equation.operator} ${equation.numTwo} = ${equation.result}</li>
+        <div class="history-item" onclick="recallEquation (event)">${equation.numOne}${equation.operator}${equation.numTwo}=${equation.result}</div>
         `
     }
     equationObject = {};
@@ -109,6 +109,29 @@ function deleteChar (event) {
     calcNumber = calcNumber.slice(0, -1);
     document.getElementById("display-id").value = document.getElementById("display-id").value.slice(0, -1);
     }
+}
+
+function recallEquation (event) {
+    event.preventDefault();
+    let recallText = event.target.textContent;
+    for (let i = 0; i<recallText.length; i++){
+        if (recallText[i] === "+"){
+            equationObject.operator = "+";
+        }
+        else if (recallText[i] === "*"){
+            equationObject.operator = "*";
+        }
+        else if (recallText[i] === "/"){
+            equationObject.operator = "/";
+        }
+        else if (recallText[i] === "-"){
+            equationObject.operator = "-";
+        }
+    }
+    let splitArray = recallText.split("=");
+    document.getElementById("display-id").value = splitArray[0];
+    calcNumber = splitArray[0];
+
 }
 
 function disableOperators () {

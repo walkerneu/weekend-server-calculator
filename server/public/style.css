@@ -28,6 +28,22 @@ body {
     background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
 }
 
+.history .history-item {
+    color: black;
+    position: relative;
+    grid-column: span 4;
+    height: 40px;
+    width: relative;
+    left: 10px;
+    border: none;
+    outline: black;
+    background-color: #7cafac;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: right;
+    padding: 10px;
+}
+
 .container {
     position: left;
     min-width: 300px;
