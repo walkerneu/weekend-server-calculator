@@ -99,3 +99,28 @@ When to make a new route
 .value = this is how we obtain the text that a user typed into an input 
     value="" is an attribute on an input element that stores that inputs current value
 
+
+
+SWITCH STATEMENT
+
+switch (math.operator) {
+    case '+':
+
+    break/return;
+    case: '-';
+
+    break;
+    case: '*';
+
+    break;
+    case: '/';
+
+    break;
+    default:
+    break;
+}
+
+SAFE NAVIGATION OPERATOR
+
+/* To have trackable notes every time a function is called
+*/
