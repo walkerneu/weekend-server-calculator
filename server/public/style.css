@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:'Times New Roman', Times, serif;
     font-size: large;
 }
 
@@ -22,10 +22,10 @@ body {
 .history button {
     color: #fff;
     position: top;
-    width: 160px;
+    width: 180px;
     margin: 8px;
     height: 80px;
-    background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+    background: linear-gradient(180deg, #2f2f2f, #911212);
 }
 
 .history .history-item {
@@ -53,12 +53,27 @@ body {
 }
 
 .container button {
-    color: #fff;
+    color: #0d0101;
     position: relative;
     width: 80px;
     margin: 8px;
     height: 80px;
-    background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+    font-size: 2.2em;
+    text-decoration: cyan;
+
+    /* background: linear-gradient(180deg, #9bf385, #248a0a); */
+}
+.container .row-2 button {
+    background: linear-gradient(180deg, #9bf385, #248a0a);
+}
+.container .row-3 button {
+    background: linear-gradient(180deg, #248a0a, #6bb3dd);
+}
+.container .row-4 button {
+    background: linear-gradient(180deg, #6bb3dd, #0293e7);
+}
+.container .row-5 button {
+    background: linear-gradient(180deg, #0293e7, #404ff5);
 }
 .container .delete {
     width: 185px;
