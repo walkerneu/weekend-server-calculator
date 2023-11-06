@@ -37,8 +37,6 @@ function operatorButton (event) {
     display.value += event.target.value;
     equationObject.operator = event.target.value;
     calcNumber += event.target.value;
-    // equationObject.numOne = Number(calcNumber);
-    // calcNumber = '';
     disableOperators ();
 }
 
@@ -58,8 +56,6 @@ function operatorButton (event) {
 function submitEquation (event) {
     event.preventDefault();
     if (equationObject.operator !== undefined){
-    // let display = document.getElementById("display-id");
-    // display.value += "=";
     let splitArray = calcNumber.split(equationObject.operator);
     equationObject.numOne = Number(splitArray[0]);
     equationObject.numTwo = Number(splitArray[1]);
@@ -214,6 +210,7 @@ function recallEquation (event) {
     let splitArray = recallText.split("=");
     document.getElementById("display-id").value = splitArray[0];
     calcNumber = splitArray[0];
+    disableOperators ();
 
 }
 
